@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라면을 끓이는 순서(예제 9번)</title>
+
+    <script>
+        function addStep() {
+            let input = prompt('라면을 끓이는 순서를 입력하세요.', '');
+
+            if (input) {
+                // DOM을 사용하여 li 요소 생성
+                let c = document.createElement('li');
+                c.innerHTML = input;  // innerHTML 사용하여 입력된 HTML 반영
+
+                // ol 요소에 접근하여 새 li 요소 추가
+                let ol = document.getElementById('ol');
+                ol.appendChild(c);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>라면을 끓이는 순서</h3>
+    <hr>
+    <ol id="ol" type="A" style="background-color: yellowgreen;" onclick="addStep();">
+        <li>물을 끓인다.</li>
+    </ol>
+</body>
+</html>
