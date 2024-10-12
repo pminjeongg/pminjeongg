@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <style>
+        table {
+            margin: auto;
+            text-align: center;
+            border: none;
+        }
+        td {
+            width: 80px;
+        }
+        input {
+            width: 100%;
+            height: 50px;
+            font-size: 1.2em;
+            margin: 5px; /* 버튼 사이 간격 추가 */
+        }
+    </style>
+    <script>
+        let expression = "";
+
+        function inputNumber(value) {
+            expression += value;
+            document.getElementById("display").value = expression;
+        }
+
+        function compute() {
+            try {
+                let result = eval(expression);
+                document.getElementById("display").value = result;
+                expression = result.toString();
+            } catch (e) {
+                document.getElementById("display").value = "Error";
+                expression = "";
+            }
+        }
+
+        function clearAll() {
+            expression = "";
+            document.getElementById("display").value = "0";
+        }
+
+        function backspace() {
+            expression = expression.slice(0, -1);
+            document.getElementById("display").value = expression || "0";
+        }
+    </script>
+</head>
+<body>
+    <h3 style="text-align: center;">계산기</h3>
+    <form style="text-align: center;">
+        <input id="display" type="text" value="0" readonly>
+        <table>
+            <tr>
+                <td><input type="button" value="Back" onclick="backspace()"></td>
+                <td><input type="button" value="CE" onclick="clearAll()"></td>
+                <td><input type="button" value="C" onclick="clearAll()"></td>
+                <td><input type="button" value="=" onclick="compute()"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="7" onclick="inputNumber('7')"></td>
+                <td><input type="button" value="8" onclick="inputNumber('8')"></td>
+                <td><input type="button" value="9" onclick="inputNumber('9')"></td>
+                <td><input type="button" value="/" onclick="inputNumber('/')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" onclick="inputNumber('4')"></td>
+                <td><input type="button" value="5" onclick="inputNumber('5')"></td>
+                <td><input type="button" value="6" onclick="inputNumber('6')"></td>
+                <td><input type="button" value="*" onclick="inputNumber('*')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" onclick="inputNumber('1')"></td>
+                <td><input type="button" value="2" onclick="inputNumber('2')"></td>
+                <td><input type="button" value="3" onclick="inputNumber('3')"></td>
+                <td><input type="button" value="-" onclick="inputNumber('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="0" onclick="inputNumber('0')"></td>
+                <td><input type="button" value="+" onclick="inputNumber('+')"></td>
+                <td><input type="button" value="NONE"></td>
+                <td><input type="button" value="NONE"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
