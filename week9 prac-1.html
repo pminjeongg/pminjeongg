@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>세션 스토리지에서 읽기</title>
+<script>
+    function search() {
+        if (typeof(Storage) === "undefined") {
+            alert("이 브라우저는 세션 스토리지를 지원하지 않습니다.");
+            return;
+        }
+
+        const item = document.getElementById("item").value;
+        let count = sessionStorage.getItem(item);
+        
+        if (!count) {
+            alert(`${item} 항목이 없습니다.`);
+            const newCount = prompt(`${item} 항목을 추가하고 싶으신가요? 개수를 입력해주세요.`);
+            if (newCount !== null) {
+                sessionStorage.setItem(item, newCount);
+                alert(`${item} 항목이 추가되었습니다.`);
+            }
+        } else {
+            document.getElementById("count").value = count;
+        }
+    }
+</script>
+</head>
+<body>
+    <h3>세션 스토리지에서 구입 리스트 검색</h3>
+    <hr>
+    <form>
+        <label>품목명: <input id="item" type="text" size="10"></label>
+        <label>개수: <input id="count" type="text" size="10" readonly></label>
+        <br>
+        <input type="button" value="검색" onclick="search()">
+    </form>
+</body>
+</html>
+
