@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>일기 보기</title>
+  <style>
+    .diary-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .diary-date {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .diary-content {
+      flex: 1;
+    }
+  </style>
+  <script>
+    window.addEventListener('load', function () {
+      const diaryListContainer = document.getElementById("diaryList");
+      const diaries = localStorage.getItem("diaries");
+      
+      if (!diaries) {
+        diaryListContainer.innerHTML = "<p>저장된 일기가 없습니다.</p>";
+        return;
+      }
+
+      // 로컬 스토리지에서 불러온 데이터를 JSON.parse로 객체로 변환
+      const parsedDiaries = JSON.parse(diaries);
+      let contentHTML = "";
+
+      parsedDiaries.forEach((diary, index) => {
+        contentHTML += `
+          <div class="diary-item">
+            <span class="diary-date">${index + 1}. ${diary.date}</span>
+            <span class="diary-content">${diary.content}</span>
+          </div>
+        `;
+      });
+
+      diaryListContainer.innerHTML = contentHTML;
+    });
+  </script>
+</head>
+<body>
+  <h3>일기 보기</h3>
+  <hr>
+  <div id="diaryList"></div>
+</body>
+</html>
+
+
+
