@@ -50,7 +50,7 @@
 - **back.js**: 백틱 사용
 - **forEach.js**: forEach() 함수 연습
 ### 12주차 고급 자바스크립트 
--**f.js**: forEach(), reduce(), map(), 화살표 함수 사용 프로그램
+- **f.js**: forEach(), reduce(), map(), 화살표 함수 사용 프로그램
 - **a.js**: 여러개 함수 사용하기
 - **c.js**: 나이 계산
 ### 13주차
