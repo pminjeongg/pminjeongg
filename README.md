@@ -44,3 +44,21 @@
 - **timer.js**: ex13-10의 워커 태스크
 - **practice13-6.html**: 웹워커 생성 및 통신 과제 (곱셈하기)
 - **mul.js**: practice13-6의 워커 태스크
+### 11주차
+- 고급 자바스크립트1 에 대해 공부
+- **func.js**: 함수형 프로그램
+- **back.js**: 백틱 사용
+- **forEach.js**: forEach() 함수 연습
+### 12주차 고급 자바스크립트 
+-**f.js**: forEach(), reduce(), map(), 화살표 함수 사용 프로그램
+- **a.js**: 여러개 함수 사용하기
+- **c.js**: 나이 계산
+### 13주차
+- nodeJs에 대해 공부
+- **run.js**: node의 Non-blocking I/O
+- **web.js**: 웹서버 만들기
+### 14주차
+  - **app1.js**: 애플리케이션 만들고 웹 서버 열기
+  - **app2.js**: get()사용, 여러 경로에서 접속 가능 서버
+  - **app3.js**: query 사용
+  - **app4.js**: 데이터를 서버로 받기
