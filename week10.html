@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>시작과 끝 숫자를 전달받아 합을 구하는 워커 태스크</title>
+</head>
+<body>
+  <h3>시작과 끝 숫자를 전달받아 합을 구하는 워커 태스크</h3>
+  <hr>
+  <input id="from" type="text" size="10"> ~
+  <input id="to" type="text" size="10"> =
+  <input id="sum" type="text" size="10" readonly>
+  <button type="button" id="add" onclick="triggerWorker()">add</button>
+  
+  <script>
+    const addWorker = new Worker("add.js");  // 워커 태스크 생성
+
+    // send -> triggerWorker로 이름 변경
+    function triggerWorker() {
+      const fromValue = document.getElementById("from").value;
+      const toValue = document.getElementById("to").value;
+
+      // 입력값 유효성 검사
+      if (isNaN(fromValue) || isNaN(toValue) || fromValue === '' || toValue === '') {
+        alert('숫자를 입력해주세요.');
+        return;
+      }
+
+      // 워커에게 전달할 객체 생성
+      const parameters = {
+        from: parseInt(fromValue, 10),
+        to: parseInt(toValue, 10)
+      };
+
+      // 워커에게 데이터 전송
+      addWorker.postMessage(parameters);
+    }
+
+    // 워커로부터 결과를 받아 출력
+    addWorker.onmessage = function (e) {
+      document.getElementById("sum").value = e.data;
+    }
+  </script>
+</body>
+</html>
+
+
