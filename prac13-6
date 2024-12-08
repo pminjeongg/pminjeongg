@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 10 - Multiplication</title>
+</head>
+<body>
+    <h3>Multiplication</h3>
+    <hr>
+    <div>
+        <input id="from" type="text" size="10">
+        <span> x </span>
+        <input id="to" type="text" size="10">
+        <button id="multiply" onclick="performMultiplication()">Multiply</button>
+        <input id="result" type="text" size="10" disabled>
+    </div>
+
+    <script>
+   
+    const multiplicationWorker = new Worker('mul.js');
+
+  
+    function performMultiplication() {
+        const values = {
+            from: document.getElementById('from').value,
+            to: document.getElementById('to').value
+        };
+        multiplicationWorker.postMessage(values);
+    }
+
+   
+    multiplicationWorker.onmessage = function (event) {
+        document.getElementById('result').value = event.data;
+    }
+    </script>
+</body>
+</html>
