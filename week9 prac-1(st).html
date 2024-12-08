@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>세션 스토리지에 쓰기</title>
+  <script>
+    function store() {
+      if (typeof(Storage) === "undefined") {
+        alert("이 브라우저는 세션 스토리지를 지원하지 않습니다.");
+        return;
+      }
+      
+      const item = document.getElementById("item").value;
+      const count = document.getElementById("count").value;
+      
+      if (item && count) {
+        sessionStorage.setItem(item, count);
+        alert(`${item} 항목이 세션 스토리지에 저장되었습니다.`);
+      } else {
+        alert("품목명과 개수를 모두 입력하세요.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h3>세션 스토리지에 구입 리스트 저장</h3>
+  <hr>
+  <form>
+    <label>품목명: <input id="item" type="text" size="10" placeholder="예: 사과"></label>
+    <label>개수: <input id="count" type="text" size="10" placeholder="예: 5"></label>
+    <br>
+    <input type="button" value="저장" onclick="store()">
+  </form>
+</body>
+</html>
+
+
